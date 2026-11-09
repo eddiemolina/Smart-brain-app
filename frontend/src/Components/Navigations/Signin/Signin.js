@@ -1,5 +1,6 @@
 import userEvent from "@testing-library/user-event";
 import React from "react";
+import { use } from "react";
 class Signin extends React.Component {
         constructor(props) {
             super(props);
@@ -18,7 +19,7 @@ class Signin extends React.Component {
         }
 
         onSubmitSignIn = () => {
-            fetch('https://smart-brain-api-backend-4jm7.onrender.com/signin', {
+            fetch('http://localhost:3001/signin', {
                 method: 'post',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify({
@@ -29,6 +30,9 @@ class Signin extends React.Component {
             .then(credentials => credentials.json())
             .then(user => {
                 if (user.id) {
+                    this.props.loadUser(user);
+                    this.props.onRouteChange('home'); 
+                } else if (user.id === 0) {
                     this.props.loadUser(user);
                     this.props.onRouteChange('home'); 
                 }

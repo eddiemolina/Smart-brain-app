@@ -1,5 +1,19 @@
+const DEMO_USER = {
+    id: 0,
+    name: 'Demo User',
+    email: 'demo@example.com',
+    entries: 5,
+    joined: '2026-01-01'
+};
+
 const controlProfile = (req,res,knex) => {
     const { id } = req.params;
+
+    // Handle demo user
+    if (id === 0) {
+        return res.json(DEMO_USER);
+    }
+
     knex
      .select('*')
      .from('users')

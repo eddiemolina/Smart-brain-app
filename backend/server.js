@@ -4,9 +4,9 @@ const cors = require('cors');
 const { controlSignIn } = require('./controllers/controlSignIn');
 const { controlRegister } = require('./controllers/controlRegister.js');
 const { controlProfile } = require('./controllers/controlProfile');
-const { controlImage , controlApiCall } = require('./controllers/controlImage');
+// const { controlImage , controlApiCall } = require('./controllers/controlImage');
 
-const PORT = process.env.PORT || 3000;
+const PORT = 3001;
 
 
 // DATABASE
